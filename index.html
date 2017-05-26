@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>自制jQuery</title>
+  <style>
+   .diy {
+     height:100px;
+     border:1px solid #000;
+     background:#ddd;
+     margin:10px;
+    }
+    .active {
+      text-decoration: line-through;
+      background:orangered;
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="diy">
+  <p>
+    hello text1
+  </p>
+</div>
+<div class="diy">
+  <p>
+    hello text2
+  </p>
+</div>
+
+
+<script src="jquery-self.js"></script>
+<script>
+  var $diy = $(".diy");
+  console.log($diy);
+  var diy1 = $diy[0];
+  var diy2 = $diy[1];
+  /*$diy.on("click",function(){
+    $diy.toggleClass("active");
+    //$diy.text("hello world");
+    $diy.html("<h1>This is my own jQuery</h1>");
+  });
+  var textArray = $diy.text();  //jQuery的逻辑里这样写只能取第一个内容
+  console.log(textArray);  //但自制jquery可以用遍历数组来实现取出全部内容列表
+  /!*var text1 = textList[0];
+  var text2 = textList[1];
+  console.log(text1);
+  console.log(text2);*!/
+  var htmlArray = $diy.html();
+  console.log(htmlArray);*/
+  //链式操作 原理：$diy === array
+  $diy.html("<h1>This is my own jQuery</h1>")
+      .addClass("active")
+      .on("click",function(){
+         $diy.toggleClass("active");
+      });
+/*
+  //find()方法
+  var $p = $diy.find("p");
+  console.log($p);
+  $p.on("click",function(){
+    console.log("you have been clicked");
+    $p.text("you have been clicked");
+  });
+*/
+</script>
+</body>
+</html>
