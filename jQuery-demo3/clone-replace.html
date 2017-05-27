@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>克隆－替换－删除元素</title>
+  <style>
+    select {
+      width: 120px;
+      height: 160px;
+    }
+  </style>
+</head>
+<body>
+<select id="unsel" size="10">
+  <option value="Arg">Argentina</option>
+  <option value="Bra">Brazil</option>
+  <option value="Can">Canada</option>
+  <option value="Chi">China</option>
+  <option value="Cub">Cuba</option>
+  <option value="Den">Denmark</option>
+  <option value="Egy">Egypt</option>
+  <option value="Fra">France</option>
+  <option value="Gre">Greece</option>
+  <option value="Spa">Spain</option>
+  <option value="Ger">Germany</option>
+  <option value="Kub">Kuba</option>
+  <option value="Swe">Swedan</option>
+</select>
+<select id="sel" size="10">
+</select>
+
+<script>
+  $("option").on("dblclick", function () {
+    if ($(this).parent().attr("id") === "unsel") {
+      if ($("#sel>option[value='" + $(this).attr('value') + "']").length === 0) {
+        //将当前元素克隆一份，追加给sel
+        $("#sel").append($(this).clone(true));
+      }
+    } else {//将当前opt删除
+      $(this).remove();
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery操作input元素</title>
+  <meta charset="utf-8"/>
+  <style>
+  </style>
+</head>
+<body>
+<form action="">
+  请选择您感兴趣的话题：<br><br>
+  <input type="checkbox">体育 <br>
+  <input type="checkbox">音乐 <br>
+  <input type="checkbox">娱乐 <br>
+  <input type="checkbox">搞笑 <br>
+  <input type="checkbox">新闻 <br><br>
+  <input type="button" value="进入我的微博">
+</form>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  //选择form下type为button的元素，绑定单击事件
+  $("form:button").click(function () {
+    //如果可以找到form下选中的input元素
+    if ($("form input:checked").length != 0) {
+      //提示：欢迎进入微博
+      alert("欢迎进入微博")
+    } else {//否则
+            //提示：至少选择一项
+      alert("至少选择一项")
+    }
+  })
+</script>
+</body>
+</html>
+
