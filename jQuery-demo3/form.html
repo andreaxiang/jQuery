@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery过滤表单属性</title>
+</head>
+<body>
+<h3>注册新用户</h3>
+<form action="">
+    用户名：<input type="text" disabled>
+    密&nbsp;码：<input type="password" disabled />
+    <input type="checkbox">同意 <br>
+    <input type="button" disabled value="提交注册信息">
+</form
+
+<script src="jquery-1.11.3.js"></script>
+<script>
+//找到form下type为checkbox的元素，绑定单击事件
+$("form input:checkbox").click(function(){
+    //选择form下所有禁用的元素，设置其disabled属性为false
+    $("form input:disabled").setAttribute("disabled","false");
+})
+
+</script>
+</body>
+</html>
