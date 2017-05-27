@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Examples</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link href="" rel="stylesheet">
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+      color: #fff;
+    }
+    .main{
+      position: relative;
+    }
+    .main1{
+      border:1px solid #ccc;
+      width: 200px;
+      position: absolute;
+      top: 0;
+      left: 210px;
+      display: none;
+    }
+    .main1>li>a{
+      color: black;
+    }
+    .main1 li{
+      float: left;
+      padding: 10px 20px;
+    }
+    .main1:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    #box>ul>li{
+      border-bottom: 1px solid #ccc;
+    }
+    #box>ul>li>a{
+      padding-right: 100px;
+      display:inline-block;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+    }
+    #box{
+      margin: 10px;
+      width: 210px;
+      background: #de272e;
+      color: #fff;
+    }
+  </style>
+
+</head>
+<body>
+<div id="box">
+  <ul>
+    <li class="main">
+      <a href="#">珠宝玉器</a>
+      <span>></span>
+      <ul class="main1">
+        <li><a href="#">翡翠</a></li>
+        <li><a href="#">玉石</a></li>
+        <li><a href="#">宝石</a></li>
+        <li><a href="#">水晶</a></li>
+        <li><a href="#">玛瑙</a></li>
+        <li><a href="#">珍珠</a></li>
+        <li><a href="#">钻石</a></li>
+        <li><a href="#">琥珀</a></li>
+        <li><a href="#">和田</a></li>
+        <li><a href="#">琥珀</a></li>
+      </ul>
+    </li>
+    <li class="main">
+      <a href="#">饰品箱包</a>
+      <span>></span>
+      <ul class="main1">
+        <li><a href="#">皮箱</a></li>
+        <li><a href="#">拎包</a></li>
+        <li><a href="#">钱包</a></li>
+        <li><a href="#">皮包</a></li>
+        <li><a href="#">背包</a></li>
+        <li><a href="#">挎包</a></li>
+      </ul>
+    </li>
+    <li class="main">
+      <a href="#">电子电器</a>
+      <span>></span>
+      <ul class="main1">
+        <li><a href="#">电脑</a></li>
+        <li><a href="#">手机</a></li>
+      </ul>
+    </li>
+    <li class="main">
+      <a href="#">家居家纺</a>
+      <span>></span>
+      <ul class="main1">
+        <li><a href="#">窗帘</a></li>
+        <li><a href="#">餐布</a></li>
+        <li><a href="#">碗碟</a></li>
+        <li><a href="#">水桶</a></li>
+        <li><a href="#">野炊</a></li>
+        <li><a href="#">帐篷</a></li>
+      </ul>
+    </li>
+    <li class="main">
+      <a href="#">酒水饮料</a>
+      <span>></span>
+      <ul class="main1">
+        <li><a href="#">牛奶</a></li>
+        <li><a href="#">罐头</a></li>
+        <li><a href="#">奶粉</a></li>
+        <li><a href="#">粮油</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(".main").on("mouseenter",function(){
+      $(this).find(".main1").show();
+    });
+    $(".main").on("mouseleave",function(){
+      $(this).find(".main1").hide();
+    });
+  });
+</script>
+
+</body>
+</html>
