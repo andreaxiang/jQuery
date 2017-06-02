@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>瀑布流加载图片</title>
+  <style>
+    * {
+      margin:0;
+      padding:0;
+      box-sizing: border-box;
+    }
+    .col {
+      float:left;
+      width:260px;
+      margin:0 10px;
+      background-color: #ea6f5a;
+    }
+    .col img {
+      max-width: 100%;
+    }
+    .clearfix:after {
+      content: '';
+      display:table;
+      clear:both;
+    }
+    .wrap {
+      width:842px;
+      margin:0 auto;
+      border:1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap clearfix">
+  <div id="column1" class="col col1"></div>
+  <div id="column2" class="col col2"></div>
+  <div id="column3" class="col col3"></div>
+</div>
+
+<script src="js/load-image.js"></script>
+</body>
+</html>

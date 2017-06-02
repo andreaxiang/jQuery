@@ -1,0 +1,389 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>木桶布局</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+
+    .clearfix:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+
+    /*åˆå§‹åŒ– end*/
+
+    .content {
+      position: relative;
+    }
+
+    .item {
+      position: absolute;
+      width: 200px;
+      margin-right: 10px;
+      margin-top: 10px;
+      transition: all 1s;
+    }
+
+    .h1 {
+      height: 200px;
+      background-color: #f4b300;
+    }
+
+    .h2 {
+      height: 300px;
+      background-color: #691bb8;
+    }
+
+    .h3 {
+      height: 400px;
+      background-color: #006ac1;
+    }
+
+    .img-preview {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    .img-row {
+      margin-bottom: 8px;
+    }
+
+    .img-row:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .img-box {
+      float: left;
+    }
+
+    .img-line .img-box:first-child {
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="img-preview">
+
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/108x51/82adfb/fff" style="height: 110.697px;"></div>
+    <div class="img-box"><img src="http://placehold.it/104x73/b7ec2b/fff" style="height: 110.697px;"></div>
+    <div class="img-box"><img src="http://placehold.it/149x53/0db5f1/fff" style="height: 110.697px;"></div>
+    <div class="img-box"><img src="http://placehold.it/125x73/a25b78/fff" style="height: 110.697px;"></div>
+    <div class="img-box"><img src="http://placehold.it/60x62/ae4479/fff" style="height: 110.697px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/138x69/22c78a/fff" style="height: 108.307px;"></div>
+    <div class="img-box"><img src="http://placehold.it/136x61/392421/fff" style="height: 108.307px;"></div>
+    <div class="img-box"><img src="http://placehold.it/80x75/0220aa/fff" style="height: 108.307px;"></div>
+    <div class="img-box"><img src="http://placehold.it/66x78/b0ab66/fff" style="height: 108.307px;"></div>
+    <div class="img-box"><img src="http://placehold.it/109x50/cad815/fff" style="height: 108.307px;"></div>
+    <div class="img-box"><img src="http://placehold.it/51x56/133318/fff" style="height: 108.307px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/56x54/97bca8/fff" style="height: 113.056px;"></div>
+    <div class="img-box"><img src="http://placehold.it/139x60/453d88/fff" style="height: 113.056px;"></div>
+    <div class="img-box"><img src="http://placehold.it/56x59/283353/fff" style="height: 113.056px;"></div>
+    <div class="img-box"><img src="http://placehold.it/68x67/e19a6f/fff" style="height: 113.056px;"></div>
+    <div class="img-box"><img src="http://placehold.it/73x53/53869b/fff" style="height: 113.056px;"></div>
+    <div class="img-box"><img src="http://placehold.it/129x60/28f7e0/fff" style="height: 113.056px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/77x63/d24a3b/fff" style="height: 113.841px;"></div>
+    <div class="img-box"><img src="http://placehold.it/64x76/ca2a2a/fff" style="height: 113.841px;"></div>
+    <div class="img-box"><img src="http://placehold.it/139x59/c9a654/fff" style="height: 113.841px;"></div>
+    <div class="img-box"><img src="http://placehold.it/142x75/fef7df/fff" style="height: 113.841px;"></div>
+    <div class="img-box"><img src="http://placehold.it/126x51/fbb4a2/fff" style="height: 113.841px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/101x53/24612f/fff" style="height: 121.541px;"></div>
+    <div class="img-box"><img src="http://placehold.it/108x61/b8e918/fff" style="height: 121.541px;"></div>
+    <div class="img-box"><img src="http://placehold.it/138x70/c16a77/fff" style="height: 121.541px;"></div>
+    <div class="img-box"><img src="http://placehold.it/100x66/1a75d2/fff" style="height: 121.541px;"></div>
+    <div class="img-box"><img src="http://placehold.it/82x77/fbb859/fff" style="height: 121.541px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/127x61/0cc0b9/fff" style="height: 106.641px;"></div>
+    <div class="img-box"><img src="http://placehold.it/50x77/a3bbe9/fff" style="height: 106.641px;"></div>
+    <div class="img-box"><img src="http://placehold.it/65x78/5c5b26/fff" style="height: 106.641px;"></div>
+    <div class="img-box"><img src="http://placehold.it/88x57/b42262/fff" style="height: 106.641px;"></div>
+    <div class="img-box"><img src="http://placehold.it/146x60/aed4ad/fff" style="height: 106.641px;"></div>
+    <div class="img-box"><img src="http://placehold.it/145x79/fb9493/fff" style="height: 106.641px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/80x53/0d5087/fff" style="height: 111.228px;"></div>
+    <div class="img-box"><img src="http://placehold.it/124x60/9d4c79/fff" style="height: 111.228px;"></div>
+    <div class="img-box"><img src="http://placehold.it/149x52/110650/fff" style="height: 111.228px;"></div>
+    <div class="img-box"><img src="http://placehold.it/130x51/98e54c/fff" style="height: 111.228px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/124x77/62aeba/fff" style="height: 104.632px;"></div>
+    <div class="img-box"><img src="http://placehold.it/67x60/2bdf4c/fff" style="height: 104.632px;"></div>
+    <div class="img-box"><img src="http://placehold.it/101x66/f063c3/fff" style="height: 104.632px;"></div>
+    <div class="img-box"><img src="http://placehold.it/70x67/f627cb/fff" style="height: 104.632px;"></div>
+    <div class="img-box"><img src="http://placehold.it/99x77/600a17/fff" style="height: 104.632px;"></div>
+    <div class="img-box"><img src="http://placehold.it/88x76/8e97ef/fff" style="height: 104.632px;"></div>
+    <div class="img-box"><img src="http://placehold.it/125x69/9e8251/fff" style="height: 104.632px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/55x65/ab2b29/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/111x73/1ab700/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/57x74/35e870/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/102x60/f53edd/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/54x60/2df4e3/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/59x73/aede9a/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/141x74/010cb3/fff" style="height: 108.161px;"></div>
+    <div class="img-box"><img src="http://placehold.it/62x78/38f394/fff" style="height: 108.161px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/105x69/2ad942/fff" style="height: 113.846px;"></div>
+    <div class="img-box"><img src="http://placehold.it/81x54/7c2152/fff" style="height: 113.846px;"></div>
+    <div class="img-box"><img src="http://placehold.it/99x55/ef0dc6/fff" style="height: 113.846px;"></div>
+    <div class="img-box"><img src="http://placehold.it/103x67/ca3b9b/fff" style="height: 113.846px;"></div>
+    <div class="img-box"><img src="http://placehold.it/95x79/0cc170/fff" style="height: 113.846px;"></div>
+    <div class="img-box"><img src="http://placehold.it/88x72/58321e/fff" style="height: 113.846px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/113x56/82a9b2/fff" style="height: 101.686px;"></div>
+    <div class="img-box"><img src="http://placehold.it/56x72/0511af/fff" style="height: 101.686px;"></div>
+    <div class="img-box"><img src="http://placehold.it/110x53/051951/fff" style="height: 101.686px;"></div>
+    <div class="img-box"><img src="http://placehold.it/54x50/e9f55d/fff" style="height: 101.686px;"></div>
+    <div class="img-box"><img src="http://placehold.it/118x74/47b393/fff" style="height: 101.686px;"></div>
+    <div class="img-box"><img src="http://placehold.it/119x52/f363ab/fff" style="height: 101.686px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/56x53/624384/fff" style="height: 114.424px;"></div>
+    <div class="img-box"><img src="http://placehold.it/90x54/78a921/fff" style="height: 114.424px;"></div>
+    <div class="img-box"><img src="http://placehold.it/82x58/568252/fff" style="height: 114.424px;"></div>
+    <div class="img-box"><img src="http://placehold.it/58x68/b88f1a/fff" style="height: 114.424px;"></div>
+    <div class="img-box"><img src="http://placehold.it/86x50/26b1bb/fff" style="height: 114.424px;"></div>
+    <div class="img-box"><img src="http://placehold.it/138x68/46c139/fff" style="height: 114.424px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/86x51/800844/fff" style="height: 105.255px;"></div>
+    <div class="img-box"><img src="http://placehold.it/124x77/32f2f1/fff" style="height: 105.255px;"></div>
+    <div class="img-box"><img src="http://placehold.it/119x61/82d83b/fff" style="height: 105.255px;"></div>
+    <div class="img-box"><img src="http://placehold.it/144x68/65b199/fff" style="height: 105.255px;"></div>
+    <div class="img-box"><img src="http://placehold.it/126x59/0d1672/fff" style="height: 105.255px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/116x56/5eb861/fff" style="height: 103.772px;"></div>
+    <div class="img-box"><img src="http://placehold.it/89x77/9220eb/fff" style="height: 103.772px;"></div>
+    <div class="img-box"><img src="http://placehold.it/133x62/aff110/fff" style="height: 103.772px;"></div>
+    <div class="img-box"><img src="http://placehold.it/86x76/0d258d/fff" style="height: 103.772px;"></div>
+    <div class="img-box"><img src="http://placehold.it/100x70/cc49b4/fff" style="height: 103.772px;"></div>
+    <div class="img-box"><img src="http://placehold.it/66x68/c428b0/fff" style="height: 103.772px;"></div>
+    <div class="img-box"><img src="http://placehold.it/55x75/d31978/fff" style="height: 103.772px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/93x66/73e6fd/fff" style="height: 101.851px;"></div>
+    <div class="img-box"><img src="http://placehold.it/140x60/74b8c1/fff" style="height: 101.851px;"></div>
+    <div class="img-box"><img src="http://placehold.it/61x67/823282/fff" style="height: 101.851px;"></div>
+    <div class="img-box"><img src="http://placehold.it/85x66/05c661/fff" style="height: 101.851px;"></div>
+    <div class="img-box"><img src="http://placehold.it/129x58/be90c6/fff" style="height: 101.851px;"></div>
+    <div class="img-box"><img src="http://placehold.it/124x75/a38d89/fff" style="height: 101.851px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/111x68/023ab0/fff" style="height: 105.595px;"></div>
+    <div class="img-box"><img src="http://placehold.it/118x67/cf1d94/fff" style="height: 105.595px;"></div>
+    <div class="img-box"><img src="http://placehold.it/102x53/effd8f/fff" style="height: 105.595px;"></div>
+    <div class="img-box"><img src="http://placehold.it/119x52/3d5c0b/fff" style="height: 105.595px;"></div>
+    <div class="img-box"><img src="http://placehold.it/123x66/64502c/fff" style="height: 105.595px;"></div>
+  </div>
+  <div class="img-row">
+    <div class="img-box"><img src="http://placehold.it/114x73/e3fc6b/fff" style="height: 114.691px;"></div>
+    <div class="img-box"><img src="http://placehold.it/114x69/96e090/fff" style="height: 114.691px;"></div>
+    <div class="img-box"><img src="http://placehold.it/141x71/96cce0/fff" style="height: 114.691px;"></div>
+    <div class="img-box"><img src="http://placehold.it/124x69/8480f5/fff" style="height: 114.691px;"></div>
+    <div class="img-box"><img src="http://placehold.it/124x72/ec9b11/fff" style="height: 114.691px;"></div>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+  function Barrel($ct) {
+    this.$ct = $ct;
+    this.rowList = [];
+    this.loadImg();
+  }
+
+  Barrel.prototype = {
+    loadImg: function () {
+      var _this = this;
+      var imgs = this.getImgUrls(10);
+
+      for (var i = 0; i < imgs.length; i++) {
+        var img = new Image();
+        img.src = imgs[i];
+        img.onload = function () {
+          var imgInfo = {
+            target: img
+            , width: 200 * (img.width / img.height)
+            , height: 200
+          };
+          _this.render(imgInfo);
+        }
+      }
+      //
+    },
+
+    render: function (imgInfo) {
+      var clientWidth = this.$ct.width();
+      var rowWidth = 0;
+      var newRowHeight = 0;
+      var lastImgInfo = imgInfo;
+
+      this.rowList.push(imgInfo);
+      for (var i = 0; i < this.rowList.length; i++) {
+        rowWidth = rowWidth + this.rowList[i].width;
+      }
+      if (rowWidth > clientWidth) {
+        this.rowList.pop();
+        newRowHeight = clientWidth * 200 / rowWidth;
+        //   rowWidth/200   ==  clientWidth/ X
+
+        this.layout(newRowHeight);
+        this.rowList = [];
+        this.rowList.push(imgInfo);
+      }
+    },
+
+    layout: function (newRowHeight) {
+      console.log('createRow');
+      var $rowCt = $('<div class="img-row"></div>');
+      $.each(this.rowList, function (idx, imgInfo) {
+        var $imgCt = $('<div class="img-box"></div>')
+          , $img = $(imgInfo.target);
+        $img.height(newRowHeight);
+        $imgCt.append($img);
+        $rowCt.append($imgCt);
+      });
+      console.log(this.$ct)
+      this.$ct.append($rowCt);
+    },
+
+    getImgUrls: function (num) {
+      var color, width, height, urls = [];
+      for (var i = 0; i < num; i++) {
+        color = Math.random().toString(16).substring(2, 8);
+        width = Math.floor(Math.random() * 100 + 50);
+        height = Math.floor(Math.random() * 30 + 50);
+        urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff");
+      }
+      return urls;
+    }
+  }
+  new Barrel($('.img-preview'));
+
+  function Barrels($ct) {
+    this.$ct = $ct;
+    this.imgNum = 40;
+    this.baseHeight = 100;
+    this.rowList = [];
+    this.loadImg();
+
+  }
+
+  Barrels.prototype = {
+
+    loadImg: function () {
+      var _this = this;
+      var imgUrls = this.getImgUrls(100);
+      $.each(imgUrls, function (idx, url) {
+        console.log(url);
+        var img = new Image();
+        img.src = url;
+        img.onload = function () {
+          var originWidth = img.width
+            , originHeight = img.height
+            , ratio = originWidth / originHeight;
+
+          var imgInfo = {
+            target: $(img)
+            , width: _this.baseHeight * ratio
+            , height: _this.baseHeight
+            , ratio: ratio
+          };
+          _this.render(imgInfo);
+        }
+      });
+    }
+    , render: function (imgInfo) {
+      var _this = this;
+      var rowList = this.rowList
+        , rowWidth = 0
+        , rowHeight = 0
+        , clientWidth = this.$ct.width()
+        , lastImgInfo = imgInfo;
+
+      this.rowList.push(imgInfo);
+
+      $.each(rowList, function (idx, imgInfo) {
+        rowWidth += imgInfo.width;
+        if (rowWidth > clientWidth) {
+          rowList.pop();
+          rowWidth = rowWidth - lastImgInfo.width;
+          rowHeight = clientWidth * _this.baseHeight / rowWidth;
+
+          _this.createRow(rowHeight);
+          _this.rowList = [];
+          _this.rowList.push(lastImgInfo);
+        }
+      });
+    },
+
+    createRow: function (rowHeight) {
+      console.log('createRow');
+      var $rowCt = $('<div class="img-row"></div>');
+      $.each(this.rowList, function (idx, imgInfo) {
+        var $imgCt = $('<div class="img-box"></div>')
+          , $img = imgInfo.target;
+        $img.height(rowHeight);
+        $imgCt.append($img);
+        $rowCt.append($imgCt);
+      });
+      console.log(this.$ct)
+      this.$ct.append($rowCt);
+    }
+    , getImgUrls: function (num) {
+      var color, width, height, urls = [];
+      for (var i = 0; i < num; i++) {
+        color = Math.random().toString(16).substring(2, 8);
+        width = Math.floor(Math.random() * 100 + 50);
+        height = Math.floor(Math.random() * 30 + 50);
+        urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff");
+      }
+      return urls;
+    }
+
+  }
+  var barrels = new Barrels($('.img-preview'));
+</script>
+
+</body>
+</html>

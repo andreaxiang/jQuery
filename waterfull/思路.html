@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>思路：瀑布流加载新闻</title>
+</head>
+<body>
+/**
+思路：
+  1. 获取数据
+  2.把数据拼接成DOM 挂到页面上
+  3.使用瀑布流访问DOM位置
+
+与后端定义好数据接口，例如：
+{
+  page:1,   //可变参数
+  len:10    //固定不变
+}
+
+function doSth()
+  1.获取page＝1 第一页的 10条数据
+  2.把10条数据拼接成DOM 放到页面
+  3.使用瀑布流去摆放DOM 位置
+  4.page＋＋
+
+  当load 出现在眼前的时候（当页面滚动(或某个条件下)）
+
+  1.获取page 的 10条数据
+  2.把10条数据拼接成DOM 放到页面
+  3.使用瀑布流摆放DOM位置
+  4.page＋＋
+**/
+
+
+<div class="wrap">
+  <ul>
+    <li>
+      <a href=""></a>
+    </li>
+    <div id="load"></div>
+  </ul>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+
+</body>
+</html>

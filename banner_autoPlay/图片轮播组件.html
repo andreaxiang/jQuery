@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      margin:0;
+    }
+    ul, li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    /*.clearfix:after {
+      content:"";
+      display:block;
+      clear:both;
+    }*/
+    .carousel {
+      position: relative;
+      width:460px;
+      height:320px;
+      margin:0 auto;
+    }
+    .carousel .img-box {
+      position: relative;
+      height:320px;
+    }
+    .carousel .img-box>li {
+      position: absolute;
+    }
+    .carousel .img-box img {
+      width:460px;
+      height:320px;
+      display: block;
+    }
+    .carousel .btn {
+      position: absolute;
+      top:50%;
+      margin-top:-15px;
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      background-color:rgba(0,0,0,0.32);
+      text-decoration: none;
+      color:#fff;
+      display: block;
+      text-align: center;
+      line-height: 30px;
+    }
+    .carousel .btn-prev {
+      left:10px;
+    }
+    .carousel .btn-next {
+      right: 10px;
+    }
+    .carousel .bullet {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -50px;
+    }
+    .carousel .bullet>li {
+      display:inline-block;
+      width:20px;
+      height:5px;
+      margin:0 5px;
+      border-radius:3px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+    .carousel .bullet>li.current {
+      background-color: #aaa; /*透明*/
+      transition: transform .5s;
+    }
+    .carousel .bullet:after {
+      content:"";
+      display:block;
+      clear:both;
+    }
+  </style>
+</head>
+<body>
+<div class="carousel">
+  <ul class="img-box">
+    <li>
+      <a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""/></a>
+    </li>
+    <li>
+      <a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""/></a>
+    </li>
+    <li>
+      <a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""/></a>
+    </li>
+    <li>
+      <a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""/></a>
+    </li>
+  </ul>
+  <a class="btn btn-prev" href="">&lt;</a>
+  <a class="btn btn-next" href="">&gt;</a>
+  <ul class="bullet">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
+<script src="jquery.js"></script>
+<script>
+
+  var $img = $(".img-box img");
+  //console.log($img.length);
+  var n = 0;
+
+  /*功能1: 实现点击小圆点切换图片*/
+  $img.hide().eq(0).show();
+  $(".bullet li").click(function(){
+    n = $(this).index();
+    $img.fadeOut(500).eq(n).fadeIn(500);
+    $(this).addClass("current").siblings().removeClass("current");
+  });
+
+  /*功能2: 实现点击上一张／下一张icon切换图片*/
+  $(".btn-prev").click(function(){
+    n = $img.index();
+    if(n < $img.length-1){
+      n += 1;
+    }else{
+      n = 0;
+    }
+    $img.hide().eq(n).show();
+    $(".bullet li").removeClass("current").eq(n).addClass("current");
+  })
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>瀑布流布局 练习</title>
+  <style>
+    body {
+      position: relative;
+    }
+
+    .item {
+      width: 200px;
+      position: absolute;
+      transition: all 0.5s;
+      margin: 10px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .h1 {
+      line-height: 200px;
+      background-color: #673ab7;
+    }
+
+    .h2 {
+      line-height: 250px;
+      background-color: #e91e63;
+    }
+
+    .h3 {
+      line-height: 350px;
+      background-color: #ffc107;
+    }
+
+    .h4 {
+      line-height: 280px;
+      background-color: #2196f3;
+    }
+
+    .h5 {
+      line-height: 320px;
+      background-color: #cddc39;
+    }
+  </style>
+</head>
+<body>
+<div class="waterfall-ct">
+  <div class="item h1" style="left: 0px; top: 0px;">
+    1
+  </div>
+  <div class="item h2" style="left: 220px; top: 0px;">
+    2
+  </div>
+  <div class="item h1" style="left: 440px; top: 0px;">
+    3
+  </div>
+  <div class="item h4" style="left: 660px; top: 0px;">
+    4
+  </div>
+  <div class="item h2" style="left: 0px; top: 220px;">
+    5
+  </div>
+  <div class="item h1" style="left: 440px; top: 220px;">
+    6
+  </div>
+  <div class="item h3" style="left: 220px; top: 270px;">
+    7
+  </div>
+  <div class="item h5" style="left: 660px; top: 300px;">
+    8
+  </div>
+  <div class="item h3" style="left: 440px; top: 440px;">
+    9
+  </div>
+  <div class="item h1" style="left: 0px; top: 490px;">
+    10
+  </div>
+  <div class="item h2" style="left: 220px; top: 640px;">
+    11
+  </div>
+  <div class="item h4" style="left: 660px; top: 640px;">
+    12
+  </div>
+  <div class="item h5" style="left: 0px; top: 710px;">
+    13
+  </div>
+  <div class="item h1" style="left: 440px; top: 810px;">
+    14
+  </div>
+  <div class="item h3" style="left: 220px; top: 910px;">
+    15
+  </div>
+  <div class="item h1" style="left: 660px; top: 940px;">
+    16
+  </div>
+  <div class="item h2" style="left: 440px; top: 1030px;">
+    17
+  </div>
+  <div class="item h4" style="left: 0px; top: 1050px;">
+    18
+  </div>
+  <div class="item h5" style="left: 660px; top: 1160px;">
+    19
+  </div>
+  <div class="item h1" style="left: 220px; top: 1280px;">
+    20
+  </div>
+  <div class="item h3" style="left: 440px; top: 1300px;">
+    21
+  </div>
+  <div class="item h2" style="left: 0px; top: 1350px;">
+    22
+  </div>
+  <div class="item h4" style="left: 220px; top: 1500px;">
+    23
+  </div>
+  <div class="item h5" style="left: 660px; top: 1500px;">
+    24
+  </div>
+  <div class="item h2" style="left: 0px; top: 1620px;">
+    25
+  </div>
+  <div class="item h5" style="left: 660px; top: 1160px;">
+    26
+  </div>
+  <div class="item h1" style="left: 220px; top: 1280px;">
+    27
+  </div>
+  <div class="item h3" style="left: 440px; top: 1300px;">
+    28
+  </div>
+  <div class="item h2" style="left: 0px; top: 1350px;">
+    29
+  </div>
+  <div class="item h4" style="left: 220px; top: 1500px;">
+    30
+  </div>
+  <div class="item h5" style="left: 660px; top: 1500px;">
+    31
+  </div>
+  <div class="item h2" style="left: 0px; top: 1620px;">
+    32
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+
+  var Waterfall = {
+    arrColHeight: [],
+    init: function ($container) {
+      this.$ct = $container;
+      this.$items = this.$ct.find('.item');
+      this.itemWidth = this.$items.first().outerWidth(true);
+      this.bind();
+      this.render();
+    },
+    bind: function () {
+      // 2. so we keep the obj as This
+      let This = this;
+      $(window).on('resize', function () {
+        // 1. 'this' in here is actually 'window'
+        This.render();
+      });
+    },
+    render: function () {
+      let This = this;
+      this.colNum = this.calColNum();
+
+      this.arrInit(this.colNum);
+
+      $.each(this.$items, function () {
+        This.placeItem($(this));
+      });
+    },
+    calColNum: function () {
+      return Math.floor(this.$ct.width() / this.itemWidth);
+    },
+    arrInit: function (colNum) {
+      for (let i = 0; i < colNum; i++) {
+        this.arrColHeight[i] = 0;
+      }
+    },
+    placeItem: function ($elem) {
+      let oPlace = this.getIndexOfMinHeight(),
+        minHeight_index = oPlace.minHeight_index,
+        minHeight = oPlace.minHeight;
+
+      $elem.css({
+        left: minHeight_index * this.itemWidth,
+        top: minHeight
+      });
+      // update colHeight after place one at that column
+      this.arrColHeight[minHeight_index] += $elem.outerHeight(true);
+
+    },
+    getIndexOfMinHeight: function () {
+      let minHeight_index,
+        minHeight = this.arrColHeight[0]; //0
+
+      this.arrColHeight.forEach(function (ele, index, arr) {
+        if (ele < minHeight) {
+          minHeight = ele;
+          minHeight_index = index;
+        }
+      });
+
+      if (typeof minHeight_index === 'undefined') {
+        minHeight_index = 0;
+      }
+
+      return {
+        minHeight_index: minHeight_index,
+        minHeight: minHeight
+      };
+    }
+
+  }
+
+  Waterfall.init($('.waterfall-ct').eq(0));
+
+
+  $(window).on('scroll', function () {
+    console.log(1);
+  })
+</script>
+
+</body>
+</html>
