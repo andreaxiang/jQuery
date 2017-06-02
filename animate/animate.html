@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery万能动画函数-animation()</title>
+  <meta charset="utf-8">
+  <style>
+    #d1 {
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      background: #eee;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 120px;
+      left: 50px;
+    }
+  </style>
+</head>
+<body>
+<h3>jQuery动画函数——透明度动画</h3>
+<button id="btn1">开始动画</button>
+<div id="d1">abcd</div>
+<button id="btn2">停止动画</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  $("#btn2").click(function () {
+    $("#d1").stop(true);
+  });
+  $("#btn1").click(function () {
+    //$("#d1").animate({
+    ////width:"300px",
+    //top:"300px",
+    ////opacity:.2,
+    ////borderWidth:10px,
+    ////padding:200,
+    ////borderRadius:25,
+
+    /**以下属性不能执行动画效果**/
+      ////fontFamily:"Arial";
+      ////transform:'translate(100px,200px)',
+      ////backgroundColor:"#f00"
+      //},1000)
+
+      //并发：多个动画顺序，同时执行。
+      //$("#d1").animate({
+      //top:300,left:300,padding:100
+      //},1000);
+
+      //排队：多个动画顺序，先后执行；
+    $("#d1").animate({top: 300}, 1000)
+      .animate({left: 300}, 1000)
+      .animate({padding: 100}, 1000)
+  });
+</script>
+</body>
+</html>
+

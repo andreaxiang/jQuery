@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+  <title> animate()动画：消失的图片 </title>
+  <meta charset="utf-8">
+  <style>
+    img {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<img src="img/1.jpg" alt="">
+<img src="img/2.jpg" alt="">
+<img src="img/3.jpg" alt="">
+<img src="img/4.jpg" alt="">
+
+<script>
+  //使用类数组对象的each（）方法遍历img,替代CSS动画写法：
+  $("img").each(function (i) {
+    //i是指当前元素下标
+    $(this).css("left", i * 200 + "px")
+  });
+  //为img元素绑定单击事件
+  $("body").on("click", "img", function (e) {
+    var $target = $(e.target);
+    //当前图片在2s内宽变为400 高变为300 透明度变为0，动画结束后执行回调函数：删除当前图片
+    $target.animate(
+      {width: "400px", height: "300px", opacity: "0"}, 2000, function () {
+        $(this).remove()
+      }//（this）是指当前执行动画的元素对象
+    );
+  })
+</script>
+
+</body>
+</html>
+

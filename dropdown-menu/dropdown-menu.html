@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8"/>
+  <title>下拉列表</title>
+  <style>
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .dropdown {
+      position: relative
+    }
+
+    .dropdown > [data-trigger='dropdown'] {
+      padding: 6px 12px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+    }
+
+    .dropdown-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #aaa;
+      position: absolute;
+      margin-top: 5px;
+      box-shadow: 5px 5px 6px #aaa;
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+      transition: all .5s linear;
+    }
+
+    .dropdown-menu.in {
+      opacity: 1;
+      height: 150px;
+    }
+
+    .dropdown-menu > li {
+      padding: 6px 20px 6px 6px
+    }
+  </style>
+</head>
+<body>
+<div class="dropdown">
+  <a data-trigger="dropdown" href="#">Dropdown</a>
+  <ul class="dropdown-menu">
+    <li><a>Action</a></li>
+    <li><a>Another action</a></li>
+    <li><a>Something else here</a></li>
+    <li>
+      <hr>
+    </li>
+    <li><a>Separated link</a></li>
+  </ul>
+</div>
+
+<script>
+  $("[data-trigger='dropdown']").click(function (e) {
+    e.preventDefault();
+    var $ul = $(this).next();
+    //$ul.css("display",
+    //$ul.css("display")=="none"?"block":"none");
+    //如果$ul有in class, 就移除$ul上的in class
+    //if($ul.hasClass("in")) $ul.removeClass("in");
+    //否则，就为$ul添加in class
+    //else $ul.addClass("in");
+    $ul.toggleClass("in");
+  });
+</script>
+</body>
+</html>
+

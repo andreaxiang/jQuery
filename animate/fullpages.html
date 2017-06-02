@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> 全屏切换 </title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      margin: 0;
+    }
+
+    /*让fixed定位的div全屏铺满整个页面的第1种实现方法*/
+    .page {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      /*让fixed定位的div全屏铺满整个页面的第二种实现方法： width:100% , height:100% */
+    }
+  </style>
+</head>
+<body>
+<div class="page" style="left: 0; background:#faa;">
+  第一个PAGE
+  <hr>
+</div>
+
+<div class="page" style="left: 100%; background:#afa;">
+  第二个PAGE
+  <hr>
+</div>
+
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+  //找到第一个class为page的div绑定单击事件
+  $(".page:first").click(function () {
+    //当前div的left在2s内改为-100%（红色背景出去）
+    $(this).animate({"left": "-100%"}, 2000);
+    //当前div的下一个兄弟在2s内left改为0（绿色背景进来）
+    $(this).next().animate({"left": "0"}, 2000);
+  });
+  $(".page:last").click(function () {
+    //当前div的left在2s内改为100%（红色背景进来）
+    $(this).animate({"left": "100%"}, 2000);
+    //当前div的前一个兄弟在2s内left改为100%（绿色背景出去）
+    $(this).prev().animate({"left": "0"}, 2000);
+  })
+</script>
+</body>
+</html>
+
